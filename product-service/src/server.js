@@ -7,10 +7,13 @@ const consumer = require('./kafka/consumer'); // Import Kafka consumer
 const app = express();
 const port = 3000;
 
-mongoose.connect('mongodb://localhost:27017/products', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/products', {  });
 
 app.use(bodyParser.json());
+
 app.use('/products', productRoutes);
+
+
 
 app.listen(port, () => {
     console.log(`Product service listening on port ${port}`);

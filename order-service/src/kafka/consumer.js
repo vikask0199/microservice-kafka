@@ -5,7 +5,7 @@ const Product = require('../../product-service/src/models/product');
 mongoose.connect('mongodb://localhost:27017/products', {  });
 
 const client = new kafka.KafkaClient({ kafkaHost: 'localhost:9092' });
-const consumer = new kafka.Consumer(client, [{ topic: 'orderCreated' }], { autoCommit: true });
+const consumer = new kafka.Consumer(client, [{ topic: 'orderCreated' }], { autoCommit: false });
 
 consumer.on('message', async (message) => {
     const { productId, quantity } = JSON.parse(message.value);
